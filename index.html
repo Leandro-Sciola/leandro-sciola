@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <base target="_blank">
+    <title>Bookmark</title>
+    <style>
+    body {
+      margin: 50px;
+      background-color: #ddd;
+      font-family: sans-serif, sans;
+    }
+    a {
+      text-decoration: none;
+    }
+    img {
+      margin-right: 6px;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    ul li {
+      padding: 10px;
+      margin: 10px;
+      background-color: #f7f6fc;
+      border-radius: 6px;
+    }
+    ul li:hover {
+      background-color: #eeeee0;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>🔗 Bookmark</h1>
+    <hr>
+    <br>
+    <br>
+    <script src="data.js"></script>
+    <script type="text/javascript">
+    function dom(title, id) {
+        var h2   = document.createElement("h2");
+        var text = document.createTextNode(title);
+        var ul   = document.createElement("ul");
+        ul.id    = id;
+        h2.appendChild(text);
+        document.body.appendChild(h2);
+        document.body.appendChild(ul);
+    }
+    const link     = data.link;
+    const category = data.category;
+    const bookmark = category => {
+        let icon = "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=" +
+                   "FAVICON&fallback_opts=TYPE,SIZE,URL&url=";
+        Object.keys(link[category]).forEach(item => {
+            let a   = document.createElement("a");
+            let ul  = document.getElementById(category);
+            let li  = document.createElement("li");
+            let img = document.createElement("img");
+            a.textContent = item;
+            a.setAttribute("href", link[category][item]);
+            img.setAttribute("src", icon + link[category][item] + "&size=16");
+            li.appendChild(img);
+            li.appendChild(a);
+            ul.appendChild(li);
+        });
+    };
+    var id = 0;
+    category.forEach(function (title) {
+        dom(title, "id" + id++);
+    });
+    id = 0;
+    Object.values(category).forEach(() => bookmark("id" + id++));
+    </script>
+  </body>
+</html>
