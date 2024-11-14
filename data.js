@@ -16,6 +16,7 @@ data.category = [
 ];
 data.link = {
   "id0": {
+    "Cifras": "https://leandro-sciola.github.io/Cifras/",
     "Download - Gospel Playlist": "https://leandro-sciola.github.io/bookmark/playlist.m3u",
     "WebAudioFont": "https://apps-online.github.io/webaudiofont",
     "MIDI Editor": "https://signal.vercel.app/edit",
