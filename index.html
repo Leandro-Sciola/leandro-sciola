@@ -62,7 +62,6 @@
     <hr>
     <br>
     <br>
-    <script src="data.js"></script>
     <script type="text/javascript">
     const icon = "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=" +
                  "FAVICON&fallback_opts=TYPE,SIZE,URL&url=";
@@ -110,9 +109,7 @@
     include("https://leandro-sciola.github.io/Bookmark/data.json",
     (error, data) => {
         if (data) {
-            Object.keys(data).forEach(function (title) {
-                bookmark(title, data[title]);
-            });
+            Object.keys(data).forEach(title => bookmark(title, data[title]));
         }
     });
     </script>
