@@ -12,7 +12,8 @@ data.category = [
   "Marketing",
   "Moda",
   "Saúde e Estética",
-  "Business"
+  "SaaS",
+  "SEO"
 ];
 data.link = {
   "id0": {
@@ -106,7 +107,6 @@ data.link = {
     "Free email": "https://www.mail.com/",
     "Minify JS Online": "https://minify-js.com/",
     "Minify CSS Online": "https://minify-css.com/",
-    "List of SaaS boilerplates (starter kits) by stack": "https://github.com/smirnov-am/awesome-saas-boilerplates",
     "PurgeCSS": "https://purgecss.com/"
   },
   "id5": {
@@ -151,6 +151,15 @@ data.link = {
     "Clínica de dermatologia": "http://www.clinicaotaviomacedo.com.br/"
   },
   "id12": {
-    "Acquire": "https://acquire.com/"
+    "List of SaaS boilerplates (starter kits) by stack": "https://github.com/smirnov-am/awesome-saas-boilerplates",
+    "Acquire": "https://acquire.com/",
+    "Product Hunt – The best new products in tech.": "https://www.producthunt.com/",
+    "Products by Indie Hackers": "https://www.indiehackers.com/products",
+    "How to create SaaS application": "https://clockwise.software/blog/how-to-create-saas-application/"
+  },
+  "id13": {
+    "SEO Review Tools": "https://www.seoreviewtools.com/",
+    "SEO Services | Agência SEO": "https://seoservices.com.br/",
+    "Rank Math - WordPress SEO tools": "https://rankmath.com/"
   }
 }
