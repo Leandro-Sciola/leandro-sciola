@@ -64,39 +64,57 @@
     <br>
     <script src="data.js"></script>
     <script type="text/javascript">
-    function dom(title, id) {
+    const icon = "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=" +
+                 "FAVICON&fallback_opts=TYPE,SIZE,URL&url=";
+    function include(file, callback) {
+        fetch(file)
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+            return res.json();
+        })
+        .then(data => callback(null, data))
+        .catch(error => callback(error, null));
+    }
+    function normalize(str) {
+        return str.normalize("NFD")
+                  .replace(/[^a-zA-Z0-9\s]/g, "")
+                  .toLowerCase()
+                  .replace(/\s/g, "-");
+    }
+    function dom(title) {
         var h2   = document.createElement("h2");
         var text = document.createTextNode(title);
         var ul   = document.createElement("ul");
-        ul.id    = id;
+        ul.id    = normalize(title);
         h2.appendChild(text);
         document.body.appendChild(h2);
         document.body.appendChild(ul);
     }
-    const link     = data.link;
-    const category = data.category;
-    const bookmark = category => {
-        let icon = "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=" +
-                   "FAVICON&fallback_opts=TYPE,SIZE,URL&url=";
-        Object.keys(link[category]).forEach(item => {
+    function bookmark(title, link) {
+        dom(title);
+        Object.keys(link).forEach(href => {
             let a   = document.createElement("a");
-            let ul  = document.getElementById(category);
+            let ul  = document.getElementById(normalize(title));
             let li  = document.createElement("li");
             let img = document.createElement("img");
-            a.textContent = item;
-            a.setAttribute("href", link[category][item]);
-            img.setAttribute("src", icon + link[category][item] + "&size=16");
+            a.textContent = href;
+            a.setAttribute("href", link[href]);
+            img.setAttribute("src", icon + link[href] + "&size=16");
             li.appendChild(img);
             li.appendChild(a);
             ul.appendChild(li);
         });
-    };
-    var id = 0;
-    category.forEach(function (title) {
-        dom(title, "id" + id++);
+    }
+    include("https://leandro-sciola.github.io/Bookmark/data.json",
+    (error, data) => {
+        if (data) {
+            Object.keys(data).forEach(function (title) {
+                bookmark(title, data[title]);
+            });
+        }
     });
-    id = 0;
-    Object.values(category).forEach(() => bookmark("id" + id++));
     </script>
   </body>
 </html>
